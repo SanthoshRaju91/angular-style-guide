@@ -30,7 +30,7 @@ author = "Santhosh Raju"
     url = "/project-structure"
 
     [[menu.main]]
-    name = "Single Responsibilty / module"
+    name = "Single Responsibilty Per Module"
     pre = ""
     weight = 2
     identifier = "single-responsibility"
