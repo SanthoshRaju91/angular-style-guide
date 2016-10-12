@@ -52,7 +52,7 @@ theme = "blackburn"
     url = "/post/modules"
 
     [[menu.main]]
-    name = "Services"
+    name = "Services & Factories"
     pre = ""
     weight = 5
     identifier = "services"
@@ -65,19 +65,6 @@ theme = "blackburn"
     identifier = "controllers"
     url = "/post/controllers"
 
-    [[menu.main]]
-    name = "Factories"
-    pre = ""
-    weight = 7
-    identifier = "factories"
-    url = "/post/factories"
-
-    [[menu.main]]
-    name = "Data Services"
-    pre = ""
-    weight = 8
-    identifier = "data-services"
-    url = "/post/data-services"
 
     [[menu.main]]
     name = "Directives"
@@ -196,7 +183,7 @@ theme = "blackburn"
     pre = ""
     weight = 25
     identifier = "exceptions-handling"
-    url = "/exceptions-handling"
+    url = "/post/exceptions-handling"
 
     [[menu.main]]
     name = "Providers"
