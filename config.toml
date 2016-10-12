@@ -1,7 +1,8 @@
-baseurl = "http://replace-this-with-your-hugo-site.com/"
+baseurl = "https://angular-style-guide.herokuapp.com/"
 languageCode = "en-us"
 title = "Angular Style Guide"
 author = "Santhosh Raju"
+theme = "blackburn"
 
 [indexes]
   tag = "angular style guide"
@@ -26,169 +27,169 @@ author = "Santhosh Raju"
     name = "Project Structure"
     pre = ""
     weight = 1
-    identifier = "project"
-    url = "/project-structure"
+
+    url = "/post/project-structure/"
 
     [[menu.main]]
     name = "Single Responsibilty Per Module"
     pre = ""
     weight = 2
     identifier = "single-responsibility"
-    url = "/single-responsibility-per-module"
+    url = "/post/single-responsibility-per-module"
 
     [[menu.main]]
     name = "Containing Everything in IIFE"
     pre = ""
     weight = 3
     identifier = "containing-in-IIFE"
-    url = "/containing-everything-in-IIFE"
+    url = "/post/containing-everything-in-IIFE"
 
     [[menu.main]]
     name = "Modules"
     pre = ""
     weight = 4
     identifier = "modules"
-    url = "/modules"
+    url = "/post/modules"
 
     [[menu.main]]
     name = "Services"
     pre = ""
     weight = 5
     identifier = "services"
-    url = "/services"
+    url = "/post/services"
 
     [[menu.main]]
     name = "Controllers"
     pre = ""
     weight = 6
     identifier = "controllers"
-    url = "/controllers"
+    url = "/post/controllers"
 
     [[menu.main]]
     name = "Factories"
     pre = ""
     weight = 7
     identifier = "factories"
-    url = "/factories"
+    url = "/post/factories"
 
     [[menu.main]]
     name = "Data Services"
     pre = ""
     weight = 8
     identifier = "data-services"
-    url = "/data-services"
+    url = "/post/data-services"
 
     [[menu.main]]
     name = "Directives"
     pre = ""
     weight = 9
     identifier = "directives"
-    url = "/directives"
+    url = "/post/directives"
 
     [[menu.main]]
     name = "Resolving Promises"
     pre = ""
     weight = 10
     identifier = "resolving-promises"
-    url = "/resolving-promises"
+    url = "/post/resolving-promises"
 
     [[menu.main]]
     name = "Manual annotating For Dependency Injections"
     pre = ""
     weight = 11
     identifier = "manual-annotating-dependency-injections"
-    url = "/manual-annotating-dependency-injections"
+    url = "/post/manual-annotating-dependency-injections"
 
     [[menu.main]]
     name = "Minification & Annotation Practices"
     pre = ""
     weight = 12
     identifier = "minfication-annotation"
-    url = "/minification-annotation"
+    url = "/post/minification-annotation"
 
     [[menu.main]]
     name = "Naming Conventions"
     pre = ""
     weight = 13
     identifier = "naming-conventions"
-    url = "/naming-conventions"
+    url = "/post/naming-conventions"
 
     [[menu.main]]
     name = "Modularity"
     pre = ""
     weight = 14
     identifier = "modularity"
-    url = "/modularity"
+    url = "/post/modularity"
 
     [[menu.main]]
     name = "Startup Logic"
     pre = ""
     weight = 15
     identifier = "startup-logic"
-    url = "/startup-logic"
+    url = "/post/startup-logic"
 
     [[menu.main]]
     name = "Angular $ wrapper services"
     pre = ""
     weight = 16
     identifier = "angular-wrapper-services"
-    url = "/angular-wrapper-services"
+    url = "/post/angular-wrapper-services"
 
     [[menu.main]]
     name = "Animations"
     pre = ""
     weight = 17
     identifier = "animations"
-    url = "/animations"
+    url = "/post/animations"
 
     [[menu.main]]
     name = "Commenting"
     pre = ""
     weight = 18
     identifier = "commenting"
-    url = "/commenting"
+    url = "/post/commenting"
 
     [[menu.main]]
     name = "Constants"
     pre = ""
     weight = 19
     identifier = "constants"
-    url = "/constants"
+    url = "/post/constants"
 
     [[menu.main]]
     name = "File Templates & Snippets"
     pre = ""
     weight = 20
     identifier = "file-template-snippets"
-    url = "/file-template-snippets"
+    url = "/post/file-template-snippets"
 
     [[menu.main]]
     name = "Routing"
     pre = ""
     weight = 21
     identifier = "routing"
-    url = "/routing"
+    url = "/post/routing"
 
     [[menu.main]]
     name = "Filters"
     pre = ""
     weight = 22
     identifier = "filters"
-    url = "/filters"
+    url = "/post/filters"
 
     [[menu.main]]
     name = "Decorators"
     pre = ""
     weight = 23
     identifier = "decorators"
-    url = "/decorators"
+    url = "/post/decorators"
 
     [[menu.main]]
     name = "Components (Building web components)"
     pre = ""
     weight = 24
     identifier = "components"
-    url = "/components"
+    url = "/post/components"
 
     [[menu.main]]
     name = "Exception Handling"
@@ -202,4 +203,4 @@ author = "Santhosh Raju"
     pre = ""
     weight = 26
     identifier = "providers"
-    url = "/providers"
+    url = "/post/providers"
