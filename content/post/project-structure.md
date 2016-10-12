@@ -1,6 +1,6 @@
 +++
 date = "2016-10-12T02:15:37-04:00"
-draft = true
+draft = false
 title = "Project Structure"
 
 +++
