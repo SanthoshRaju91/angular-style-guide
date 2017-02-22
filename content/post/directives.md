@@ -41,6 +41,43 @@ Prefer using two or three letter prefix (except ng) while naming directives to a
 <!-- Recommended-->
 <my-directive>, <my-test-directive>
 ```
+<b>Directive Scope</b>
+
+    * Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any    AngularJS application.
+    * All directives have a scope associated with them. They use this scope for accessing data/methods inside the template and link function. By default, unless explicitly set, directives don’t create their own scope. Therefore, directives use their parent scope ( usually a controller ) as their own.
+    * However, AngularJS allows us to change the default scope of directives by passing a configuration object known as directive definition object
+
+<b>Different types of directive scopes-</b>
+  Scope: False - Directive uses its parent scope 
+
+  Example -
+
+<div ng-app="test">
+    
+    <div ng-controller="Ctrl1">
+        <h2 ng-click="reverseName()">Hey {{name}}, Click me to reverse your name</h2>
+        <div my-directive class='directive'></div>
+    </div>
+</div>
+
+var app = angular.module("test",[]);
+
+app.controller("Ctrl1",function($scope){
+    $scope.name = "Harry";
+    $scope.reverseName = function(){
+        $scope.name = $scope.name.split('').reverse().join('');
+    };
+});
+
+app.directive("myDirective", function(){
+    return {
+        restrict: "EA",
+        scope: false,
+        template: "<div>Your name is : {{name}}</div>"+
+    };
+});
+
+  Since there’s no scope provided in the DDO, the directive uses its parent scope
 
 <b>Clean-up function</b>
 
