@@ -59,7 +59,7 @@ Prefer using two or three letter prefix (except ng) while naming directives to a
         <div my-directive class='directive'></div>
     </div>
 </div>
-
+```javascript
 var app = angular.module("test",[]);
 
 app.controller("Ctrl1",function($scope){
@@ -76,11 +76,145 @@ app.directive("myDirective", function(){
         template: "<div>Your name is : {{name}}</div>"+
     };
 });
+```
 
   Since there’s no scope provided in the DDO, the directive uses its parent scope
 
-<b>Clean-up function</b>
+<b>Scope: True - Directive gets a new scope-</b>
+    * This is achieved by setting a “true” value to the scope property of the DDO. When directive scope is set to “true”, AngularJS will create a new scope object and assign to the directive. This newly created scope object is prototypically inherited from its parent scope ( the controller scope where it’s been used ).
+
+    * When scope is set to “true”, AngularJS will create a new scope by inheriting parent scope ( usually controller scope, otherwise the application’s rootScope ). Any changes made to this new scope will not reflect back to the parent scope. However, since the new scope is inherited from the parent scope, any changes made in the controller ( the parent scope ) will be reflected in the directive scope
+
+<b>Scope : { } -Directive gets a new isolated scope </b>
+
+  * In this case a new scope is created for the directive, but it will not be inherited from the parent scope. This new scope also known as Isolated scope because it is completely detached from its parent scope
+
+  Example-
+  ```javascript
+    var app = angular.module("test",[]);
+app.directive("myDirective",function(){
+    return {
+        restrict: "EA",
+        scope: {},
+        link: function(scope,elem,attr){
+            // code goes here ...
+        }
+    }   
+ });
+  ```
+  *AngularJS allows to communicate with the parent scope using some special symbols knows as prefixes. Because of course there are still situations where the directive needs to be able to exchange data with parent scope. The next section is dedicated to Isolated scope and its properties.
+
+<b>"@" Scope:</b>
+    
+    This type of scope is used for passing value to the directive scope. Let's say that you want to create a widget for a notification message:
+  
+  Example-
+  ```javascript
+      app.controller("MessageCtrl", function() {
+        $scope.message = "Product created!";
+      });
+      app.directive("notification", function() {
+        return {
+            restrict: 'E',
+            scope: {
+                message: '@'
+            },
+            template: '<div class="alert">{{message}}</div>'
+        }
+      });
+
+  ```
+  <notification message="{{message}}"></notification>
+
+<b>"=" Scope:</b> 
+    * In this scope type, scope variables are passed instead of the values, which means that we will not pass {{message}}, we will pass message instead. The reason behind this feature is constructing two-way data binding between the directive and the page elements or controllers. Let's see it in action
+    
+    Example-
+    ```javascript
+    .directive("bookComment", function() {
+      return {
+          restrict: 'E',
+          scope: {
+              text: '='
+          },
+          template: '<input type="text" ng-model="text"/>'
+      }
+    });
+
+    ```
+    <book-comment text="commentText"></book-comment>
+
+<b>&" Scope:</b>
+
+    We are able to pass the value, and reference to directives. In this scope type we will have a look at how to pass expressions to the directive. In real-life cases, you may need to pass a specific function (expression) to directives in order to prevent coupling. Sometimes, directives do not need to know much about the idea behind the expressions. For example, a directive will like the book for you, but it doesn't know how to do that. In order to do that, you can follow a structure like this
+
+    Example-
+
+    ```javascript
+    .directive("likeBook", function() {
+      return {
+          restrict: 'E',
+          scope: {
+              like: '&'
+          },
+          template: '<input type="button" ng-click="like()" value="Like"/>'
+      }
+    });
+
+    ```
+    In this directive, an expression will be passed to the directive button via the like attribute. Let's define a function in the controller and pass it to the directive inside the HTML.
+
+    ```javascript
+    $scope.likeFunction = function() {
+      alert("I like the book!")
+    }
+    ```
+    This will be inside the controller, and the template will be:
+    <like-book like="likeFunction()"></like-book>
+
+<b>Directive Clean-UP</b>
 
    * Consider defining clean-up function by registering an event, element.on( ‘$destroy’, …).
    * It is a good practice to remove event listeners once the ‘$destroy’ event is broadcasted, to avoid instances of memory leaks.
    * Listeners registered to scopes and elements are automatically cleaned up when they are destroyed.
+
+   Example-
+    element.on('$destroy', function() {
+        // Do cleanup work
+    });
+    OR
+    scope.on('$destroy', function() {
+        // Do cleanup work
+    });
+   * There are a few special events that AngularJS emits. When a DOM node that has been compiled with AngularJS's compiler is destroyed, it emits a $destroy event. Similarly, when an AngularJS scope is destroyed, it broadcasts a $destroy event to listening scopes.
+
+   * By listening to this event, you can remove event listeners that might cause memory leaks. Listeners registered to scopes and elements are automatically cleaned up when they are destroyed, but if you registered a listener on a service, or registered a listener on a DOM node that isn't being deleted, you'll have to clean it up yourself or you risk introducing a memory leak.
+
+<b>PreLink, PostLink and Controller Methods of Angular Directives</b>
+
+  the link function has the duty of linking the model to the templates. Link function is the place where AngularJs does the data binding to the compiled templates
+  link: function LinkFn(scope, elem, attr, ctrl){}
+  There are 4 parameters available to the link function.
+  scope : The scope of the directive
+  elem : Dom element where the directive is applied
+  attr : Collection of attributes of the Dom Element
+  ctrl : Array of controllers required by the directive
+
+  Example-
+
+  ```javascript
+    var app = angular.module('app', []);
+    app.directive('dad', function () {
+        return {
+            restrict: 'EA',
+            template: '<div>{{greeting}}{{name}}</div>',
+            link: function(scope,elem,attr){
+                scope.name = 'Paul';
+                scope.greeting = 'Hey, I am ';
+            }
+        };
+    });
+
+  ```
+  The above is the usual way to create a link function inside a directive. However, AngularJs allows to set the link property to an object also. Advantage of having an object is, we can split the link function into two separate methods called, pre-link and post-link
+  
