@@ -43,11 +43,11 @@ Prefer using two or three letter prefix (except ng) while naming directives to a
 ```
 <b>Directive Scope</b>
 
-  >Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any    AngularJS application.
+Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any    AngularJS application.
 
-  >All directives have a scope associated with them. They use this scope for accessing data/methods inside the template and link function. By default, unless explicitly set, directives don’t create their own scope. Therefore, directives use their parent scope ( usually a controller ) as their own.
+All directives have a scope associated with them. They use this scope for accessing data/methods inside the template and link function. By default, unless explicitly set, directives don’t create their own scope. Therefore, directives use their parent scope ( usually a controller ) as their own.
 
-  >However, AngularJS allows us to change the default scope of directives by passing a configuration object known as directive definition object.
+However, AngularJS allows us to change the default scope of directives by passing a configuration object known as directive definition object.
 
 <b>Different types of directive scopes-</b>
   Scope: False - Directive uses its parent scope 
