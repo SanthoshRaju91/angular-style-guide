@@ -44,7 +44,9 @@ Prefer using two or three letter prefix (except ng) while naming directives to a
 <b>Directive Scope</b>
 
     * Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any    AngularJS application.
+
     * All directives have a scope associated with them. They use this scope for accessing data/methods inside the template and link function. By default, unless explicitly set, directives don’t create their own scope. Therefore, directives use their parent scope ( usually a controller ) as their own.
+
     * However, AngularJS allows us to change the default scope of directives by passing a configuration object known as directive definition object
 
 <b>Different types of directive scopes-</b>
@@ -108,7 +110,7 @@ app.directive("myDirective",function(){
     
     This type of scope is used for passing value to the directive scope. Let's say that you want to create a widget for a notification message:
   
-  Example-
+  Example- 
   ```javascript
       app.controller("MessageCtrl", function() {
         $scope.message = "Product created!";
@@ -146,8 +148,9 @@ app.directive("myDirective",function(){
 
 <b>&" Scope:</b>
 
-    We are able to pass the value, and reference to directives. In this scope type we will have a look at how to pass expressions to the directive. In real-life cases, you may need to pass a specific function (expression) to directives in order to prevent coupling. Sometimes, directives do not need to know much about the idea behind the expressions. For example, a directive will like the book for you, but it doesn't know how to do that. In order to do that, you can follow a structure like this
+     * In this scope type we will have a look at how to pass expressions to the directive. In real-life cases, you may need to pass a specific function (expression) to directives in order to prevent coupling. Sometimes, directives do not need to know much about the idea behind the expressions. For example, a directive will like the book for you, but it doesn't know how to do that. In order to do that, you can follow a structure like this
 
+    * In this directive, an expression will be passed to the directive button via the like attribute. Let's define a function in the controller and pass it to the directive inside the HTML.
     Example-
 
     ```javascript
@@ -162,7 +165,6 @@ app.directive("myDirective",function(){
     });
 
     ```
-    In this directive, an expression will be passed to the directive button via the like attribute. Let's define a function in the controller and pass it to the directive inside the HTML.
 
     ```javascript
     $scope.likeFunction = function() {
@@ -170,6 +172,7 @@ app.directive("myDirective",function(){
     }
     ```
     This will be inside the controller, and the template will be:
+    
     <like-book like="likeFunction()"></like-book>
 
 <b>Directive Clean-UP</b>
