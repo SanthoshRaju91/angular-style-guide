@@ -43,11 +43,11 @@ Prefer using two or three letter prefix (except ng) while naming directives to a
 ```
 <b>Directive Scope</b>
 
-    * Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any    AngularJS application.
+    <p>Directives are one of the most powerful features of AngularJS. You can imagine them as building blocks ( aka re-usable components ) of any    AngularJS application.</p>
 
-    * All directives have a scope associated with them. They use this scope for accessing data/methods inside the template and link function. By default, unless explicitly set, directives don’t create their own scope. Therefore, directives use their parent scope ( usually a controller ) as their own.
+    <p>All directives have a scope associated with them. They use this scope for accessing data/methods inside the template and link function. By default, unless explicitly set, directives don’t create their own scope. Therefore, directives use their parent scope ( usually a controller ) as their own.</p>
 
-    * However, AngularJS allows us to change the default scope of directives by passing a configuration object known as directive definition object
+    <p>However, AngularJS allows us to change the default scope of directives by passing a configuration object known as directive definition object</p>
 
 <b>Different types of directive scopes-</b>
   Scope: False - Directive uses its parent scope 
@@ -83,9 +83,9 @@ app.directive("myDirective", function(){
   Since there’s no scope provided in the DDO, the directive uses its parent scope
 
 <b>Scope: True - Directive gets a new scope-</b>
-    * This is achieved by setting a “true” value to the scope property of the DDO. When directive scope is set to “true”, AngularJS will create a new scope object and assign to the directive. This newly created scope object is prototypically inherited from its parent scope ( the controller scope where it’s been used ).
+    <p>This is achieved by setting a “true” value to the scope property of the DDO. When directive scope is set to “true”, AngularJS will create a new scope object and assign to the directive. This newly created scope object is prototypically inherited from its parent scope ( the controller scope where it’s been used ).</p>
 
-    * When scope is set to “true”, AngularJS will create a new scope by inheriting parent scope ( usually controller scope, otherwise the application’s rootScope ). Any changes made to this new scope will not reflect back to the parent scope. However, since the new scope is inherited from the parent scope, any changes made in the controller ( the parent scope ) will be reflected in the directive scope
+    <p>When scope is set to “true”, AngularJS will create a new scope by inheriting parent scope ( usually controller scope, otherwise the application’s rootScope ). Any changes made to this new scope will not reflect back to the parent scope. However, since the new scope is inherited from the parent scope, any changes made in the controller ( the parent scope ) will be reflected in the directive scope</p>
 
 <b>Scope : { } -Directive gets a new isolated scope </b>
 
@@ -108,7 +108,7 @@ app.directive("myDirective",function(){
 
 <b>"@" Scope:</b>
     
-    This type of scope is used for passing value to the directive scope. Let's say that you want to create a widget for a notification message:
+  <p>This type of scope is used for passing value to the directive scope. Let's say that you want to create a widget for a notification message:</p>
   
   Example- 
   ```javascript
