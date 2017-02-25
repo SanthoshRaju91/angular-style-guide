@@ -108,7 +108,7 @@ app.directive("myDirective",function(){
 
 <b>"@" Scope:</b>
     
-  * This type of scope is used for passing value to the directive scope. Let's say that you want to create a widget for a notification message:
+This type of scope is used for passing value to the directive scope. Let's say that you want to create a widget for a notification message:
   
   Example- 
   ```javascript
@@ -221,3 +221,105 @@ app.directive("myDirective",function(){
   ```
   The above is the usual way to create a link function inside a directive. However, AngularJs allows to set the link property to an object also. Advantage of having an object is, we can split the link function into two separate methods called, pre-link and post-link
   
+  <b>PostLink-</b>
+In general we can write the post-link function in two ways-
+```javascript
+1. var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div></div>',
+        link: function(scope,elem,attr){
+            scope.name = 'Paul';
+            scope.greeting = 'Hey, I am ';
+        }
+    };
+});
+
+2  var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div></div>',
+        link: {
+            post: function(scope,elem,attr){
+                scope.name = 'Paul';
+                scope.greeting = 'Hey, I am ';
+            }
+        }
+    };
+});
+```
+<b>PreLink-</b>
+The signature is of the pre-link function is same as that of a post-link. The only difference between the pre-link and a post-link is the order they gets executed
+
+```javascript
+var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div class="dad">{{greeting}}{{name}}'+
+        '<son></son>'+
+        '</div>',
+        link: function(scope,elem,attr){
+            scope.name = 'Paul';
+            scope.greeting = 'Hey, I am ';
+        }
+    };
+});
+app.directive('son', function () {
+    return {
+        restrict: 'EA',
+        template: '<div class="son">{{sonSays}}</div>',
+        link: function(scope,elem,attr){
+            scope.sonSays = 'Hey, I am son, and my dad is '+ scope.name;
+        }
+    };
+```
+Output- Hey, I am son, and my dad is undefined
+
+We created a son directive and placed inside the dad directive’s template. Since there is no scope specified for the son directive, we assume that all parent directive scope should be available to it. Let’s look at the output tab of the jsFiddle, we can see that the son directive prints like this:
+
+Now let’s analyse what happened. Here, both the dad and son directives have link functions, and both these link functions are post-links. When a directive contains multiple child directives, all of the child directive’s link functions executed first then the parent directive link function. So, in this case, when son directive’s link function executes, the dad directive is still not linked the data to the template. That’s why the son directive outputs the dad’s name as undefined.
+
+This is where the pre-link comes handy. A pre-link function of a directive will get executed before all of its child directives’ link functions
+
+<b>Controller Function-</b>
+ 
+```javascript
+
+var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div class="dad">{{greeting}}{{name}}'+
+        '<son></son>'+
+        '</div>',
+        controller: function(){
+            this.name = 'Paul'
+        },
+        link: function(scope,elem,attr,ctrl){
+            scope.name = ctrl.name;
+            scope.greeting = 'Hey, I am ';
+        }
+    };
+});
+app.directive('son', function () {
+    return {
+        restrict: 'EA',
+        require: '^dad',
+        template: '<div class="son">{{sonSays}}</div>',
+        link: function(scope,elem,attr,ctrl){
+            scope.sonSays = 'Hey, I am son, and my dad is '+ ctrl.name;
+        }
+    };
+});
+```
+
+Changing post-link to pre-link will solve the above problem. However, it’s not a best practice to create pre-link functions whenever we introduce a child directive. Assume, if instead of a child directive, what if we want to share some data to another directive applied to the same DOM element ?
+
+Directive’s controller is designed for that. A controller is a place where directive can define it’s public API.
+Order of Execution-
+Controller gets executed first
+Pre-link gets executed next
+Post-link gets executed last
