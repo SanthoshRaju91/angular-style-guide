@@ -83,9 +83,9 @@ app.directive("myDirective", function(){
   Since there’s no scope provided in the DDO, the directive uses its parent scope
 
 <b>Scope: True - Directive gets a new scope-</b>
-    * This is achieved by setting a “true” value to the scope property of the DDO. When directive scope is set to “true”, AngularJS will create a new scope object and assign to the directive. This newly created scope object is prototypically inherited from its parent scope ( the controller scope where it’s been used ).
+This is achieved by setting a “true” value to the scope property of the DDO. When directive scope is set to “true”, AngularJS will create a new scope object and assign to the directive. This newly created scope object is prototypically inherited from its parent scope ( the controller scope where it’s been used ).
 
-    * When scope is set to “true”, AngularJS will create a new scope by inheriting parent scope ( usually controller scope, otherwise the application’s rootScope ). Any changes made to this new scope will not reflect back to the parent scope. However, since the new scope is inherited from the parent scope, any changes made in the controller ( the parent scope ) will be reflected in the directive scope
+When scope is set to “true”, AngularJS will create a new scope by inheriting parent scope ( usually controller scope, otherwise the application’s rootScope ). Any changes made to this new scope will not reflect back to the parent scope. However, since the new scope is inherited from the parent scope, any changes made in the controller ( the parent scope ) will be reflected in the directive scope
 
 <b>Scope : { } -Directive gets a new isolated scope </b>
 
@@ -148,10 +148,11 @@ This type of scope is used for passing value to the directive scope. Let's say t
 
 <b>&" Scope:</b>
 
-     * In this scope type we will have a look at how to pass expressions to the directive. In real-life cases, you may need to pass a specific function (expression) to directives in order to prevent coupling. Sometimes, directives do not need to know much about the idea behind the expressions. For example, a directive will like the book for you, but it doesn't know how to do that. In order to do that, you can follow a structure like this
+In this scope type we will have a look at how to pass expressions to the directive. In real-life cases, you may need to pass a specific function (expression) to directives in order to prevent coupling. Sometimes, directives do not need to know much about the idea behind the expressions. For example, a directive will like the book for you, but it doesn't know how to do that. In order to do that, you can follow a structure like this
 
-    * In this directive, an expression will be passed to the directive button via the like attribute. Let's define a function in the controller and pass it to the directive inside the HTML.
-    Example-
+In this directive, an expression will be passed to the directive button via the like attribute. Let's define a function in the controller and pass it to the directive inside the HTML.
+
+Example-
 
     ```javascript
     .directive("likeBook", function() {
@@ -171,9 +172,9 @@ This type of scope is used for passing value to the directive scope. Let's say t
       alert("I like the book!")
     }
     ```
-    * This will be inside the controller, and the template will be:
+This will be inside the controller, and the template will be:
     
-     <like-book like="likeFunction()"></like-book>
+<like-book like="likeFunction()"></like-book>
 
 <b>Directive Clean-UP</b>
 
