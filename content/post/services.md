@@ -11,6 +11,27 @@ There are 3 ways to instantiate a service in angular JS
    * Factory
    * Provider
 
+Services
+
+Syntax: module.service( 'serviceName', function ); 
+Result: When declaring serviceName as an injectable argument you will be provided with an instance of the function. In other words new FunctionYouPassedToService().
+
+Factories
+
+Syntax: module.factory( 'factoryName', function ); 
+Result: When declaring factoryName as an injectable argument you will be provided with the value that is returned by invoking the function reference passed to module.factory.
+
+Providers
+
+Syntax: module.provider( 'providerName', function ); 
+Result: When declaring providerName as an injectable argument you will be provided with (new ProviderFunction()).$get(). The constructor function is instantiated before the $get method is called - ProviderFunction is the function reference passed to module.provider.
+
+Providers have the advantage that they can be configured during the module configuration phase.
+
+Here is the link from stackoverflow for a detailed explanation apart from the one given above
+
+http://stackoverflow.com/questions/15666048/angularjs-service-vs-provider-vs-factory
+
 Services in Angular JS are singletons, Services are instantiated with the new keyword, use this for public methods and variables.
 
 <b>Example</b>
