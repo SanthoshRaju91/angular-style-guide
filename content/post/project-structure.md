@@ -33,14 +33,20 @@ Description: An ideal AngularJS app structure should be modularized into very sp
 
 |-- app.js
 |-- dashboard/
-|   |-- DashboardService.js
-|   |-- DashboardCtrl.js
+|   |-- dashboard.html
+|   |-- dashboard.scss
+|   |-- dashboard.directive.js
+|   |-- dashboard.controller.js
 |-- login/
-|   |-- LoginService.js
-|   |-- LoginCtrl.js
+|   |-- login.html
+|   |-- login.scss
+|   |-- login.directive.js
+|   |-- login.controller.js
 |-- inbox/
-|   |-- InboxService.js
-|   |-- InboxCtrl.js
+|   |-- inbox.html
+|   |-- inbox.scss
+|   |-- inbox.directive.js
+|   |-- inbox.controller.js
 
 
 Advantages:

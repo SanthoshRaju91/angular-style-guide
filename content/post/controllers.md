@@ -14,7 +14,7 @@ The controller in AngularJS is a function that adds additional functionality to 
 
 ## Do not use Controller for
 
-   * Manipulate DOM — Controllers should contain only business logic. Putting any presentation logic into Controllers significantly affects its testability. Angular has databinding for most cases and directives to encapsulate manual DOM manipulation.
+   * DOM manipulation — Controllers should contain only business logic. Putting any presentation logic into Controllers significantly affects its testability. Angular has databinding for most cases and directives to encapsulate manual DOM manipulation.
    * Format input — Use angular form controls instead.
    * Filter output — Use angular filters instead.
    * Share code or state across controllers — Use angular services instead.
@@ -104,6 +104,7 @@ Use a variable for this when using the controllerAs syntax
   </div>
 </div>
 ```
+## Nested Controllers
 
 In case of nested controllers we can see that each controller is accessing the name property, but the question is: which one? That code looks very confusing.
 
