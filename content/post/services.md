@@ -47,11 +47,14 @@ function logger() {
    };
 }
 ```
-For choosing between Service and Factory refer
 
-[Service V/s Factory one and for all](http://blog.thoughtram.io/angular/2015/07/07/service-vs-factory-once-and-for-all.html)
+Choosing between Service and Factory : Which one should we use ?
 
-[Angular Factory V/s Service](https://tylermcginnis.com/angularjs-factory-vs-service-vs-provider-5f426cfe6b8c#.ivkojy8de)
+It turns out that when we call service() it actually calls factory()and passes a function that asks the injector to instantiate an object by the given constructor.
+
+It’s actually better to use services when it comes to migrating to ES6. 
+Reason:  Service is a constructor function and a factory is not. Working with constructor functions in ES5 allows us to easily use ES6 classes when we migrate to ES6. (An ES6 class is really just a constructor function in ES5.)
+With factories, this is not possible because they are simply called as functions.
 
 Expose the callable members of the service (its interface) at the top, using a technique derived from the Revealing Module Pattern.
 
