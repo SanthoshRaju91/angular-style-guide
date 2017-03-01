@@ -10,8 +10,6 @@ So your question would be is there a better in dealing with this problem? Of Cou
 
 So your development involves task automations from Gulp / Grunt.
 
-My personal recommendation is to use Gulp, because it more easy readable and extremely easy to write. So how to automate it.
-
 <b>ng-annotate</b>
 
 Use ng-annotate for <b>Gulp</b> or <b>Grunt</b> and comment functions that need automated dependency injection using `/* @ngInject */`

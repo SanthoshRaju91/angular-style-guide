@@ -7,12 +7,28 @@ title = "Naming Conventions"
 
 Using consistent names for all components while building Angular application, is utmost important.  
 
-Because of the following reasons, as noted by John Papa.
-
    1. Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
    2. The naming conventions should simply help you find your code faster and make it easier to understand.
 
 The Recommended way of naming files and structuring them is as below.
+
+|-- app.js
+|-- dashboard/
+|   |-- dashboard.html
+|   |-- dashboard.scss
+|   |-- dashboard.directive.js
+|   |-- dashboard.controller.js
+|-- login/
+|   |-- login.html
+|   |-- login.scss
+|   |-- login.directive.js
+|   |-- login.controller.js
+|-- inbox/
+|   |-- inbox.html
+|   |-- inbox.scss
+|   |-- inbox.directive.js
+|   |-- inbox.controller.js
+
 
 ```
 

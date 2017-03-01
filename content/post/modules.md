@@ -16,6 +16,8 @@ Use unique naming conventions with separators for sub-modules.
 ## Declaring the Module
 It is recommended to declare modules without a variable using the setter syntax.
 
+Reason :  With 1 component per file, there is rarely a need to introduce a variable for the module
+
 <b>Example</b>
 
 ```javascript
@@ -45,6 +47,8 @@ angular
 When using a module, it is better to avoid using a variable and instead use chaining with the getter syntax.
 <b>Example</b>
 
+Reason : This produces more readable code and avoids variable collisons or leaks.
+
 ```javascript
   angular
       .module('app')
@@ -59,6 +63,8 @@ When using a module, it is better to avoid using a variable and instead use chai
 Use named functions instead of passing an anonymous function in as a callback.
 
 This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+
+Reason : This produces more readable code, is much easier to debug, and reduces the amount of nested callback code. 
 
 ```javascript
 /* avoid */

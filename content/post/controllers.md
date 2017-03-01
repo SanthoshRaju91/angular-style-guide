@@ -14,7 +14,7 @@ The controller in AngularJS is a function that adds additional functionality to 
 
 ## Do not use Controller for
 
-   * Manipulate DOM — Controllers should contain only business logic. Putting any presentation logic into Controllers significantly affects its testability. Angular has databinding for most cases and directives to encapsulate manual DOM manipulation.
+   * DOM manipulation — Controllers should contain only business logic. Putting any presentation logic into Controllers significantly affects its testability. Angular has databinding for most cases and directives to encapsulate manual DOM manipulation.
    * Format input — Use angular form controls instead.
    * Filter output — Use angular filters instead.
    * Share code or state across controllers — Use angular services instead.
@@ -23,23 +23,35 @@ The controller in AngularJS is a function that adds additional functionality to 
 
 ## controllerAs View Syntax
 
-Use the controllerAs syntax over the classic controller with $scope syntax.
-
-```html
+Use the controllerAs syntax over the classic controller with $scope syntax. Wherever possible, the controllerAs should be declared in the route/state provider itself. Better to avoid declaration in HTML.
 <!-- avoid -->
-<div ng-controller="myController">
+<div ng-controller="home.Controller">
     {{ name }}
 </div>
 
-```
-
-```html
 <!-- recommended -->
-<div ng-controller="myController as ctrl">
-    {{ ctrl.name }}
-</div>
 
-```
+Route.js
+
+function routerConfig($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+                url: '/',
+ templateUrl:        'app/components/homePage/homePage.html',
+                controller: 'home.Controller',
+                controllerAs: 'vm'
+            })
+})
+
+homePage.controller.js
+
+angular
+        .module('newapp')
+    .controller('home.Controller', function(homeService,    $location) {
+            var vm = this;
+        vm.name = {};
+    });
+
 
 ## Reason
 
@@ -72,11 +84,10 @@ Use a variable for this when using the controllerAs syntax
 ```javascript
   /* recommended  */
   function CustomerController() {
-      var self = this;
-      self.name = {};
+      var vm = this;
+      vm.name = {};
       self.sendMessage = function() { };
   }
-
 ```
 
 <b>More Examples</b>
@@ -93,6 +104,7 @@ Use a variable for this when using the controllerAs syntax
   </div>
 </div>
 ```
+## Nested Controllers
 
 In case of nested controllers we can see that each controller is accessing the name property, but the question is: which one? That code looks very confusing.
 
