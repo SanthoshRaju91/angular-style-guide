@@ -1,6 +1,6 @@
 +++
 draft = false
-title = "Services & Factories"
+title = "Services, Factories & Providers"
 
 +++
 

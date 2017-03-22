@@ -9,22 +9,55 @@ AngularJS routes enables you to show different content depending on what route i
 
 The routing in the angular application can be achieved by using:
 
-   * ngRoute is a module developed by the Angular.js team which was earlier part of the Angular core.
-   * ui-router is a framework which was made outside the Angular.js project to improve and enhance routing capabilities.
+  * ngRoute is a module developed by the Angular.js team which was earlier part of the Angular core.
+  * ui-router is a framework which was made outside the Angular.js project to improve and enhance routing capabilities.
 
 <b>ngRoute</b>
 
-The ngRoute module routes your application to different pages without reloading the entire application.
+	* The ngRoute module routes your application to different pages without reloading the entire application.
 
-Your application needs a container to put the content provided by the routing.This container is the ng-view directive. Applications can only have one ng-view directive, and this will be the placeholder for all views provided by the route.
+	* Your application needs a container to put the content provided by the routing.This container is the ng-view directive. Applications can only have one ng-view directive, and this will be the placeholder for all views provided by the route.
 
 <b>Example and Reference</b>
+
+```javascript
+
+var app = angular.module("appName", ['ngRoute']);
+app.config(function($routeProvider) { 	
+	$routeProvider 			
+		.when('/view1', { 			
+			templateUrl: 'view1.html', 		
+			controller: 'FirstController' 		
+		})
+		.when('/view2', { 			
+			templateUrl: 'view2.html', 		
+			controller: 'SecondController' 		
+		})
+		 .otherwise({ 			
+			redirectTo: '/view1' 		
+		}); 
+});
+
+```
+
+	* when() method takes a pathand a route as parameters.
+	* path is a part of the URL after the # symbol.
+	* route contains two properties - templateUrl and controller.
+	* templateUrl property defines which HTML template AngularJS should load and display inside the div with the ngView directive.
+	* controller property defines which controllers should be used with the HTML template.
+
+	When the application is loaded, path is matched against the part of the URL after the # symbol. If no route paths matches the given URL the browser will be redirected to the path specified in the otherwise() function.
+
 
 [Angular Routing](http://www.w3schools.com/angular/angular_routing.asp)
 
 <b>ui-router</b>
 
-ui-router allows for nested views and multiple named views. This is very useful with larger app where you may have pages that inherit from other sections. ui-router allows for you to have strong-type linking between states based on state names. Change the url in one place will update every link to that state when you build your links with ui-sref. Very useful for larger projects where URLs might change. states allow you to map and access different information about different states and you can easily pass information between states via $stateParams. You can easily determine if you are in a state or parent of a state to adjust UI element (highlighting the navigation of the current state) within your templates via $state provided by ui-router which you can expose via setting it in $rootScope on run.
+	* ui-router allows for nested views and multiple named views. This is very useful with larger app where you may have pages that inherit from other sections. 
+
+	* ui-router allows for you to have strong-type linking between states based on state names. Change the url in one place will update every link to that state when you build your links with ui-sref. Very useful for larger projects where URLs might change. 
+
+	* states allow you to map and access different information about different states and you can easily pass information between states via $stateParams. You can easily determine if you are in a state or parent of a state to adjust UI element (highlighting the navigation of the current state) within your templates via $state provided by ui-router which you can expose via setting it in $rootScope on run.
 
 <b>Example and Reference</b>
 
