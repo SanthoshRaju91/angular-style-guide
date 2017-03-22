@@ -18,7 +18,9 @@ The routing in the angular application can be achieved by using:
 
 	* Your application needs a container to put the content provided by the routing.This container is the ng-view directive. Applications can only have one ng-view directive, and this will be the placeholder for all views provided by the route.
 
-<b>Example and Reference</b>
+<b>$routeProvider</b>
+
+$routeProvider is used to configure the routes. We use the ngRoute config() to configure the $routeProvider. The config() takes a function which takes the $routeProvider as parameter and the routing configuration goes inside the function. $routeProvider has a simple API, accepting either the when() or otherwise() method.
 
 ```javascript
 
@@ -48,6 +50,7 @@ app.config(function($routeProvider) {
 
 	When the application is loaded, path is matched against the part of the URL after the # symbol. If no route paths matches the given URL the browser will be redirected to the path specified in the otherwise() function.
 
+<b>Example and Reference</b>
 
 [Angular Routing](http://www.w3schools.com/angular/angular_routing.asp)
 

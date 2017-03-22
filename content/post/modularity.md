@@ -61,3 +61,8 @@ For Eg: If we were to write a controller that should be coupled with an Angular 
     }
 
     ```
+<b> avoid circular dependancies </b>
+
+When using dependancy injection, it is better to be in continuous check about dependancies. It can be very dangerous to have modules depending on each other. Here is some interesting read about circular depandancies.
+
+[Cyclic Dependancy](http://misko.hevery.com/2008/08/01/circular-dependency-in-constructors-and-dependency-injection)
