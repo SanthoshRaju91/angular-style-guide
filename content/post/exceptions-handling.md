@@ -1,5 +1,4 @@
 +++
-date = "2016-10-12T02:18:48-04:00"
 draft = false
 title = "Exception Handling"
 

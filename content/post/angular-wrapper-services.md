@@ -1,5 +1,4 @@
 +++
-date = "2016-10-12T02:17:46-04:00"
 draft = false
 title = "Angular $ Wrapper Services"
 

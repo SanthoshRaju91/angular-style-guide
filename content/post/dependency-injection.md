@@ -1,5 +1,4 @@
 +++
-date = "2016-10-12T02:17:06-04:00"
 draft = false
 title = "Manual Annotating for Dependency Injection"
 
