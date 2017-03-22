@@ -1,7 +1,15 @@
-.menu {
+#menu {
   width: auto !important;
 }
 
 #menu .brand {
   margin: 0.5em 1em !important;
+}
+
+pre {
+	background-color: #dcdcdc;
+}
+
+pre > code {
+	font-color: black;
 }
